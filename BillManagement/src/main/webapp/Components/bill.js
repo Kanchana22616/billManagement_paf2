@@ -42,7 +42,7 @@ $(document).on("click", "#btnSave", function(event)
 				 dataType : "text", 
 				 complete : function(response, status) 
 			 { 
-				 onItemSaveComplete(response.responseText, status); 
+				 onbillSaveComplete(response.responseText, status); 
 			 } 
 		});
 		
@@ -53,7 +53,7 @@ $(document).on("click", "#btnSave", function(event)
 	//billsavecomplefunction
 	
 
-	function onItemSaveComplete(response, status) 
+	function onbillSaveComplete(response, status) 
 	{ 
 	  if (status == "success") 
 	   { 
@@ -121,7 +121,7 @@ $(document).on("click", ".btnRemove", function(event)
 					 dataType : "text", 
 					 complete : function(response, status) 
 				 { 
-			     onItemDeleteComplete(response.responseText, status); 
+			     onbillDeleteComplete(response.responseText, status); 
 			     } 
 		 }); 
 	});
@@ -130,7 +130,7 @@ $(document).on("click", ".btnRemove", function(event)
 
 //deletecompletion
 
-function onItemDeleteComplete(response, status) 
+function onbillDeleteComplete(response, status) 
 { 
 	  if (status == "success") 
 	 { 
