@@ -14,8 +14,8 @@ import utill.dbConnection;
 
 public class BillDao {
 	
-	public static String addBillDetails(String getUserId, String getBillId,
-			String getDate, String getArrears, String getAmount, String getTotalPayble, String getEmpId) {
+	public static String addBillDetails(String UserId, String BillId,
+			String Date, String Arrears, String Amount, String TotalPayble, String EmpId) {
 
 		
 
@@ -24,7 +24,7 @@ public class BillDao {
 		try {
 
 			PreparedStatement ps1 = con.prepareStatement("select billId from bill where billId=?");
-			ps1.setString(1, getBillId);
+			ps1.setString(1, BillId);
 			ResultSet rrs = ps1.executeQuery();
 
 			if (rrs.next()) {
@@ -35,13 +35,15 @@ public class BillDao {
 				
 				
 				PreparedStatement ps = con.prepareStatement("insert into bill values(?,?,?,?,?,?,?)");
-				ps.setString(1, getUserId);
-				ps.setString(2, getBillId);
-				ps.setString(3, getDate);
-				ps.setString(4, getArrears);
-				ps.setString(5, getAmount);
-				ps.setString(6, getTotalPayble);
-				ps.setString(7, getEmpId);
+				ps.setString(1, UserId);
+				ps.setString(2, BillId);
+				ps.setString(3, Date);								
+				ps.setFloat(4, Float.parseFloat(Arrears));
+				ps.setFloat(5, Float.parseFloat(Amount));
+				ps.setFloat(6, Float.parseFloat(TotalPayble));
+				ps.setInt(7, Integer.parseInt(EmpId));
+				
+				
 
 				int i = ps.executeUpdate();
 
@@ -92,18 +94,18 @@ public class BillDao {
 
 	}
 
-	public static boolean updateBillDetails(String getNewdate, String getNewarrears, String getNewamount, String getNewtotalPayble, String getBillId) {
+	public static boolean updateBillDetails(String Newdate, String Newarrears, String Newamount, String NewtotalPayble, String BillId) {
 
 		Connection con = dbConnection.connect();
 
 		try {
 
 			PreparedStatement ps = con.prepareStatement("update bill set date=? , arrears=? , amount=? , totalPayble=? where billId=?");
-			ps.setNString(1, getNewdate);
-			ps.setNString(2, getNewarrears);
-			ps.setNString(3, getNewamount);
-			ps.setNString(4, getNewtotalPayble);
-			ps.setNString(5, getBillId);
+			ps.setNString(1, Newdate);
+			ps.setFloat(2, Float.parseFloat(Newarrears));
+			ps.setFloat(3, Float.parseFloat(Newamount));
+			ps.setFloat(4, Float.parseFloat(NewtotalPayble));
+			ps.setNString(5, BillId);
 			int i = ps.executeUpdate();
 
 			if (i > 0) {
@@ -122,14 +124,14 @@ public class BillDao {
 	
 
 
-	public static boolean deleteBillDetails(String getBillId) {
+	public static boolean deleteBillDetails(String BillId) {
 
 		Connection con = dbConnection.connect();
 
 		try {
 
 			PreparedStatement ps = con.prepareStatement("DELETE FROM bill WHERE billId=?");
-			ps.setNString(1, getBillId);
+			ps.setNString(1, BillId);
 			int i = ps.executeUpdate();
 
 			if (i > 0) {
