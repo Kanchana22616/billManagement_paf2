@@ -163,7 +163,45 @@ function onItemDeleteComplete(response, status)
 		
 		
 	}	
-		
 	
+	
+	
+		
+	function validateProjectForm() {
+	
+	if ($("#user_id").val().trim() == "") {
+		return "Insert User ID:";
+	}
+
+	
+	if ($("#date").val().trim() == "") {
+		return "Insert Date:";
+	}
+	
+	
+	
+	
+	var tmparreears = $("#arreears").val().trim();
+	 if (!$.isNumeric(tmpunit_usage)) 
+	 {
+		 return "Insert arreears.";
+	 }
+
+	
+	 var tmpamount = $("#amount").val().trim();
+	 if (!$.isNumeric(tmpamount)) 
+	 {
+		 return "Insert amount.";
+	 }
+	 
+	 var tmptotalpayble = $("#totalpayble").val().trim();
+	 if (!$.isNumeric(tmptotalpayble)) 
+	 {
+		 return "Insert totalpayble.";
+	 }
+
+
+	return true;
+}
 
 
