@@ -66,11 +66,11 @@ public class BillApi extends HttpServlet {
 		
 		Map paras = getParasMap(request);
 		boolean output = BillDao.updateBillDetails(
-				paras.get("getNewdate").toString(),
-				paras.get("getNewarrears").toString(),
-				paras.get("getNewamount").toString(),
-				paras.get("getNewtotalPayble").toString(),
-				paras.get("getBillId").toString());
+				paras.get("Newdate").toString(),
+				paras.get("Newarrears").toString(),
+				paras.get("Newamount").toString(),
+				paras.get("NewtotalPayble").toString(),
+				paras.get("BillId").toString());
 		
 		response.getWriter().println(output);
 		
@@ -85,7 +85,7 @@ public class BillApi extends HttpServlet {
 
 		Map paras = getParasMap(request);
 		boolean output = BillDao.deleteBillDetails(
-				paras.get("getBillId").toString());
+				paras.get("BillId").toString());
 		response.getWriter().println(output);
 
 	}
